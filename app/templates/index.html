@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <body style="background-color: #d5c600;">
+    <style>
+        h2 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Family Connections Page</title>
+        <h2> Family Connections Page</h2>
+        {{ bootstrap.load_css() }}
+     </head>
+     <!-- Button to All -->
+     <div>
+        <a href="{{ url_for('display_page', type= 'all') }}">
+            <button>All</button>
+      </a>
+     </div>
+     <div>
+        <:>
+     </div>
+     <div>
+        <a href="{{ url_for('display_page', type= 'book') }}">
+            <button>Books</button>
+      </a>
+      <a href="{{ url_for('display_page', type= 'game') }}">
+        <button>Games</button>
+  </a>
+  <a href="{{ url_for('display_page', type= 'movie') }}">
+    <button>Movies</button>
+</a>
+     </div>
+     <div>
+        <:>
+        </div>
+        <div>
+        <a href="{{ url_for('insert_page') }}">
+            <button>Insert New Activity</button>
+        </a>
+     </div>
+     <!-- Buttonss to the Books, Games, and Movies Should Be Stacked Horizontally Not Vertically -->
+     <!-- Button to Books -->
+
+     <!-- Button to Games -->
+
+     <!-- Button to Movies -->
+  </body>
+</html>

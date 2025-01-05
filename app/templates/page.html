@@ -1,0 +1,55 @@
+<!-- The difference in the page is what you display based on it's type.
+If it's all you display everything.
+Otherwise you only display objects that have the same type as they passed in type. 
+Ex:type = book, only display books, you get the idea.-->
+<!-- backColor = "#d5c600" -->
+<html lang="en">
+    <style>
+        h2 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <!-- This changes the color of the background based on what type of page it is -->
+{% if type == 'book' %}
+    <body style="background-color: #967BB6;">
+    <h2> Book Page </h2>
+{% elif type == 'movie' %}
+    <body style="background-color: #001495;">
+    <h2> Movie Page </h2>
+{% elif type == 'game' %}
+    <body style="background-color: #406e41;">
+    <h2> Game Page </h2>
+{% else %}
+    <body style="background-color: #d5c600;">
+    <h2> All Page </h2>
+{% endif %}
+<!-- Here we set up the nested loops that do the divisions and the stuff -->
+{% if type == 'all' %}
+    {% for i in range(act|length) %}
+        <a href="{{ url_for('inspect', index=i ) }}" 
+            target="_blank" >
+            <img  src="{{act[i].image_url}}", alt = "{{act[i].title}}" />
+        </a>
+    {% endfor %}
+{%else%}
+    {% for i in range(act|length) %}
+        {% if type == act[i].type %}
+        <a href="{{ url_for('inspect', index=i ) }}" >
+            
+            <img  src="{{act[i].image_url}}", alt = "{{act[i].title}}" />
+        </a>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<body>
+<div> <:> </div>
+
+<center>
+    <a href="{{ url_for('home_page') }}">
+    <button>Home</button>
+</center>
+</html>

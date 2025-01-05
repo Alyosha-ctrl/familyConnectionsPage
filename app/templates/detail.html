@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <body style="background-color: #d5c600;">
+    <style>
+        h2 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <!-- This displays all the stuff like the notes and the title and the time and all that stuff. -->
+    <h2> {{act.title}} </h2>
+    <p> Poster:{{act.author}} </p>
+    <img  src="{{act.image_url}}", alt = "{{act.title}}" />
+    <p>Notes:{{act.note}}</p>
+    <!-- This is the last thing to make sure that the person can return home -->
+    <center>
+    <a href="{{ url_for('home_page') }}">
+    <button>Home</button>
+    </center>
+</html>
