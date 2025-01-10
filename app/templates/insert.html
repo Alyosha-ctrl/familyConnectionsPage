@@ -10,19 +10,18 @@
         }
     </style>
     <form method="POST" action="/insert">
-        {{ form.csrf_token }}
-        <p> Title </p>
-        {{ form.title(size=32) }}
-        <p> Poster </p>
-        {{ form.author(size=32) }}
-        <p> Type(Book, Game, Movie) </p>
-        {{ form.type(size=32) }}
-        <p> Image Adress </p>
-        {{ form.image_url(size=32) }}
-        <p> Note/Review </p>
-        {{ form.note(size=64) }}
-        <p> Date(yyyy/mm/dd) </p>
-        {{ form.date(size=64) }}
+      <label>Title</label>
+      <input type="text" name="title" placeholder="Title...">
+      <label>Poster</label>
+      <input type="text" name="author" placeholder="You...">
+      <label>Type(book, game, movie)</label>
+      <input type="text" name= "type" placeholder="Type...">
+      <label> Image Adress </label>
+      <input type="text" name="image_url" placeholder="Address">
+      <label> Note/Review </label>
+      <input type="text" name="note" placeholder="Note">
+      <label> Date(yyyy/mm/dd) </label>
+      <input type="text" name="date" placeholder="yyyy/mm/dd">
         <input type="submit" value="Submit">
       </form>
   </body>

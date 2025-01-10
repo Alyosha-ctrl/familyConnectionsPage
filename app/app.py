@@ -1,18 +1,15 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap4
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, request, redirect
+from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm 
 from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
-from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, migrate
 
 #Flask Configuration
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'csumb-otter'
 app.debug = True
-bootstrap = Bootstrap4(app)
+bootstrap = Bootstrap(app)
 
 #Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -120,11 +117,20 @@ def home_page():
 
 @app.route('/insert', methods=['GET', 'POST'])
 def insert_page():
-    form = activityForm()
-    if form.validate_on_submit():
-        store_song(form.type.data, form.title.data, form.image_url.data, form.author.data, form.note.data, form.date.data)
+    title = request.form.get("title")
+    type = request.form.get("type")
+    date = request.form.get("date")
+    image_url = request.form.get("image_url")
+    note = request.form.get("note")
+    author = request.form.get("author")
+    
+    
+    if title != '' and type != '' and date != '' and image_url != '' and note != '' and author != '':
+        p = activityDB(title = title, type = type, date = date, image_url = image_url, note = note, author = author)
+        db.session.add(p)
+        db.session.commit()
         return redirect('/')
-    return render_template('insert.html', form = form)
+    return render_template('insert.html', )
 
 @app.route('/delete/<string:title>')
 def erase(title):
